@@ -4,7 +4,7 @@ const { where } = require("sequelize");
 class CityRepository {
   async createCity({ name }) {
     try {
-      const city = await City.create({ name });
+      const city = await City.create({ name: name });
       return city;
     } catch (error) {
       console.log("Something went wrong in the repository layer");
@@ -17,7 +17,7 @@ class CityRepository {
       await City.destroy({
         where: {
           id: cityId,
-        }
+        },
       });
       return true;
     } catch (error) {
@@ -26,13 +26,19 @@ class CityRepository {
     }
   }
 
-  async updateCity(cityId, data){
+  async updateCity(cityId, data) {
     try {
-      const city = await City.update(data,{
-        where : {
-          id:cityId
-        }
-      });
+      //by using below approach will get array but not the data changed
+      // const city = await City.update(data,{
+      //   where : {
+      //     id:cityId
+      //   }
+      // });
+
+      //for getting updated data use below approach
+      const city = await City.findByPk(cityId);
+      city.name = data.name;
+      await city.save();
       return city;
     } catch (error) {
       console.log("Something went wrong in the repository layer");
@@ -40,13 +46,11 @@ class CityRepository {
     }
   }
 
-  async getCity(cityId){
+  async getCity(cityId) {
     try {
       const city = await City.findByPk(cityId);
       return city;
-    } catch (error) {
-      
-    }
+    } catch (error) {}
   }
 }
 
