@@ -44,6 +44,16 @@ class CityService {
       throw { error };
     }
   }
+
+  async getAllCities() {
+    try {
+      const cities = this.CityRepository.getAllCities();
+      return cities;
+    } catch (error) {
+      console.log("Something went wrong in ths service layer");
+      throw { error };
+    }
+  }
 }
 
 module.exports = CityService;
