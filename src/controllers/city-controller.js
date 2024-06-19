@@ -22,6 +22,27 @@ const create = async (req, res) => {
   }
 };
 
+const bulk = async (req, res) => {
+  console.log("body", req.body);
+  try {
+    const city = await cityService.bulkCreate(req.body);
+    return res.status(201).json({
+      data: city,
+      success: true,
+      message: "Successfully bb city created",
+      err: {},
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      data: {},
+      success: false,
+      message: "failed city creation",
+      err: error,
+    });
+  }
+};
+
 const destroy = async (req, res) => {
   try {
     const city = await cityService.deleteCity(req.params.id);
@@ -108,4 +129,5 @@ module.exports = {
   destroy,
   get,
   getAll,
+  bulk,
 };
