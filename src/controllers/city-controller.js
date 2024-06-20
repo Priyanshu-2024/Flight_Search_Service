@@ -122,6 +122,26 @@ const destroy = async (req, res) => {
   }
 };
 
+const getAirport = async (req, res) => {
+  try {
+    const city = await cityService.getAirport(req.params.id);
+    return res.status(200).json({
+      data: city,
+      success: true,
+      message: "Successfully city fetched",
+      err: {},
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      data: {},
+      success: false,
+      message: "failed city fetching",
+      err: error,
+    });
+  }
+};
+
 module.exports = {
   create,
   update,
@@ -129,4 +149,5 @@ module.exports = {
   get,
   getAll,
   bulk,
+  getAirport,
 };

@@ -1,10 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const { where } = require("sequelize");
 
 const { PORT } = require("./config/serverConfig");
 const ApiRoutes = require("./routes/index");
-const { City, Airport } = require("./models/index");
 const db = require("./models/index");
 
 const setupAndStartServer = async () => {

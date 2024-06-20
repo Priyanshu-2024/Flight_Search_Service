@@ -10,6 +10,7 @@ router.get("/city/:id", CityController.get);
 router.get("/city", CityController.getAll);
 router.delete("/city/:id", CityController.destroy);
 router.patch("/city/:id", CityController.update);
+router.get("/cityAirport/:id", CityController.getAirport);
 
 router.post("/airport", AirportController.create);
 router.post("/airportbulk", AirportController.bulk);
