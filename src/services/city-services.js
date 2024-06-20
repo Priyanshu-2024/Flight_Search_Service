@@ -25,9 +25,9 @@ class CityService {
     }
   }
 
-  async deleteCity(cityId) {
+  async getCity(cityId) {
     try {
-      const city = this.CityRepository.deleteCity(cityId);
+      const city = this.CityRepository.getCity(cityId);
       return city;
     } catch (error) {
       console.log("Something went wrong in ths service layer");
@@ -35,10 +35,10 @@ class CityService {
     }
   }
 
-  async getCity(cityId) {
+  async getAllCities(filter) {
     try {
-      const city = this.CityRepository.getCity(cityId);
-      return city;
+      const cities = this.CityRepository.getAllCities(filter);
+      return cities;
     } catch (error) {
       console.log("Something went wrong in ths service layer");
       throw { error };
@@ -55,10 +55,10 @@ class CityService {
     }
   }
 
-  async getAllCities(filter) {
+  async deleteCity(cityId) {
     try {
-      const cities = this.CityRepository.getAllCities(filter);
-      return cities;
+      const city = this.CityRepository.deleteCity(cityId);
+      return city;
     } catch (error) {
       console.log("Something went wrong in ths service layer");
       throw { error };
