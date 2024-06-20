@@ -7,6 +7,9 @@
     - `PORT=3000`
 - Inside the `src/config` folder create a new config.json and the following piece of json.
 
+### To initialize Sequelize 
+- `npx sequelize init`
+
 ```
 {
   "development": {
@@ -54,3 +57,15 @@ and then execute `npx sequelize db:migrate`
 ### City -> id, name, created_at, updated_at
 ### Airport -> id, name, address, city_id, created_at, updated_at
     Relationship -> City has many airports and Airport belongs to a city (one to many)
+
+### Code to generate models
+```
+npx sequelize model:generate --name Airport --attributes name:String, address:String, cityId:integer
+```
+### Code to generate Seeders file
+```
+npx sequelize seed:generate --name add-airports
+```
+```
+npx sequelize db:seed:all
+```

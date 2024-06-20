@@ -12,33 +12,6 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
      */
-
-    await queryInterface.bulkInsert("Airports", [
-      {
-        name: "Sardar Vallabhbhai Patel International Airport",
-        cityId: 8,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        name: "Chhatrapati Shivaji International Airport",
-        cityId: 11,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        name: "Indira Gandhi International Airport",
-        cityId: 10,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        name: "Pune International Airport",
-        cityId: 12,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-    ]);
   },
 
   async down(queryInterface, Sequelize) {
