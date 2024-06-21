@@ -12,38 +12,37 @@ module.exports = {
       flightNumber: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique: true,
       },
       airplaneId: {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
       departureAirportId: {
-        allowNull: false,
         type: Sequelize.INTEGER,
+        allowNull: false,
       },
       arrivalAirportId: {
-        allowNull: false,
         type: Sequelize.INTEGER,
+        allowNull: false,
       },
       arrivalTime: {
-        allowNull: false,
         type: Sequelize.DATE,
+        allowNull: false,
       },
       departureTime: {
-        allowNull: false,
         type: Sequelize.DATE,
+        allowNull: false,
       },
       price: {
-        allowNull: false,
         type: Sequelize.INTEGER,
+        allowNull: false,
       },
       boardingGate: {
         type: Sequelize.STRING,
       },
       totalSeats: {
-        allowNull: false,
         type: Sequelize.INTEGER,
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
