@@ -15,6 +15,16 @@ class CrudRepository {
     }
   }
 
+  async bulk(data) {
+    try {
+      const result = await this.model.bulkCreate(data);
+      return result;
+    } catch (error) {
+      console.log("Something went wrong in Crud Repository");
+      throw { error };
+    }
+  }
+
   async get(modelId) {
     try {
       const result = await this.model.findByPk(modelId);

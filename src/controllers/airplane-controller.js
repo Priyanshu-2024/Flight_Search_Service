@@ -4,7 +4,7 @@ const airplaneService = new AirplaneService();
 
 const create = async (req, res) => {
   try {
-    const airplane = await airplaneService.createAirplane(req.body);
+    const airplane = await airplaneService.create(req.body);
     return res.status(201).json({
       data: airplane,
       message: "airplane Successfully created",
@@ -24,7 +24,7 @@ const create = async (req, res) => {
 
 const bulk = async (req, res) => {
   try {
-    const airplane = await airplaneService.bulkAirplane(req.body);
+    const airplane = await airplaneService.bulk(req.body);
     return res.status(201).json({
       data: airplane,
       message: "airplane Successfully created",
@@ -44,7 +44,7 @@ const bulk = async (req, res) => {
 
 const get = async (req, res) => {
   try {
-    const airplane = await airplaneService.getAirplane(req.params.id);
+    const airplane = await airplaneService.get(req.params.id);
     return res.status(200).json({
       data: airplane,
       message: "airplane Successfully fetching",
@@ -64,7 +64,7 @@ const get = async (req, res) => {
 
 const getall = async (req, res) => {
   try {
-    const airplane = await airplaneService.getallAirplane(req.query);
+    const airplane = await airplaneService.getAll(req.query);
     return res.status(200).json({
       data: airplane,
       message: "airplane Successfully fetched",
@@ -84,10 +84,7 @@ const getall = async (req, res) => {
 
 const update = async (req, res) => {
   try {
-    const airplane = await airplaneService.updateAirplane(
-      req.params.id,
-      req.body
-    );
+    const airplane = await airplaneService.update(req.params.id, req.body);
     return res.status(201).json({
       data: airplane,
       message: "airplane Successfully Updated",
@@ -107,7 +104,7 @@ const update = async (req, res) => {
 
 const destroy = async (req, res) => {
   try {
-    const airplane = await airplaneService.deleteAirplane(req.params.id);
+    const airplane = await airplaneService.destroy(req.params.id);
     return res.status(201).json({
       data: airplane,
       message: "airplane Successfully deleted",

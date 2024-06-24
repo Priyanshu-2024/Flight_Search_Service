@@ -1,76 +1,20 @@
 const { CityRepository } = require("../repository/index");
+const CrudService = require("./crud-service");
 
-class CityService {
+const cityRepository = new CityRepository();
+
+class CityService extends CrudService {
   constructor() {
-    this.CityRepository = new CityRepository();
+    const cityRepository = new CityRepository();
+    super(cityRepository);
   }
 
-  async createCity(data) {
+  async getAirport(CityId) {
     try {
-      const city = this.CityRepository.createCity(data);
-      return city;
+      const result = await cityRepository.getAirport(CityId);
+      return result;
     } catch (error) {
-      console.log("Something went wrong in ths service layer");
-      throw { error };
-    }
-  }
-
-  async bulkCreate(data) {
-    try {
-      const city = this.CityRepository.bulkCreate(data);
-      return city;
-    } catch (error) {
-      console.log("Something went wrong in ths service layer");
-      throw { error };
-    }
-  }
-
-  async getCity(cityId) {
-    try {
-      const city = this.CityRepository.getCity(cityId);
-      return city;
-    } catch (error) {
-      console.log("Something went wrong in ths service layer");
-      throw { error };
-    }
-  }
-
-  async getAllCities(filter) {
-    try {
-      const cities = this.CityRepository.getAllCities(filter);
-      return cities;
-    } catch (error) {
-      console.log("Something went wrong in ths service layer");
-      throw { error };
-    }
-  }
-
-  async updateCity(cityId, data) {
-    try {
-      const city = this.CityRepository.updateCity(cityId, data);
-      return city;
-    } catch (error) {
-      console.log("Something went wrong in ths service layer");
-      throw { error };
-    }
-  }
-
-  async deleteCity(cityId) {
-    try {
-      const city = this.CityRepository.deleteCity(cityId);
-      return city;
-    } catch (error) {
-      console.log("Something went wrong in ths service layer");
-      throw { error };
-    }
-  }
-
-  async getAirport(cityId) {
-    try {
-      const city = await this.CityRepository.getAirport(cityId);
-      return city;
-    } catch (error) {
-      console.log("Something went wrong in ths service layer");
+      console.log("Something went wrong in the service layer");
       throw { error };
     }
   }

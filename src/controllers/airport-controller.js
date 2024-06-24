@@ -4,7 +4,7 @@ const airportService = new AirportService();
 
 const create = async (req, res) => {
   try {
-    const airport = await airportService.createAirport(req.body);
+    const airport = await airportService.create(req.body);
     return res.status(201).json({
       data: airport,
       message: "airport Successfully created",
@@ -24,7 +24,7 @@ const create = async (req, res) => {
 
 const bulk = async (req, res) => {
   try {
-    const airport = await airportService.bulkAirport(req.body);
+    const airport = await airportService.bulk(req.body);
     return res.status(201).json({
       data: airport,
       message: "airports Successfully created",
@@ -44,7 +44,7 @@ const bulk = async (req, res) => {
 
 const get = async (req, res) => {
   try {
-    const airport = await airportService.getAirport(req.params.id);
+    const airport = await airportService.get(req.params.id);
     console.log(airport);
     return res.status(200).json({
       data: airport,
@@ -65,7 +65,7 @@ const get = async (req, res) => {
 
 const getall = async (req, res) => {
   try {
-    const airport = await airportService.getallAirport(req.query);
+    const airport = await airportService.getAll(req.query);
     return res.status(200).json({
       data: airport,
       message: "airport Successfully fetched",
@@ -85,7 +85,7 @@ const getall = async (req, res) => {
 
 const update = async (req, res) => {
   try {
-    const airport = await airportService.updateAirport(req.params.id, req.body);
+    const airport = await airportService.update(req.params.id, req.body);
     return res.status(201).json({
       data: airport,
       message: "airport Successfully Updated",
@@ -105,7 +105,7 @@ const update = async (req, res) => {
 
 const destroy = async (req, res) => {
   try {
-    const airport = await airportService.deleteAirport(req.params.id);
+    const airport = await airportService.destroy(req.params.id);
     return res.status(201).json({
       data: airport,
       message: "airport Successfully deleted",
