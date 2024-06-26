@@ -31,6 +31,26 @@ const create = async (req, res) => {
   }
 };
 
+const get = async (req, res) => {
+  try {
+    const flight = await flightService.getFlight(req.params.id);
+    return res.status(SuccessCode.OK).json({
+      data: flight,
+      message: "flight Successfully fetched",
+      success: true,
+      err: {},
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(ServerErrorCodes.INTERNAL_SERVER_ERROR).json({
+      data: {},
+      success: false,
+      message: "failed flight fetching",
+      err: error,
+    });
+  }
+};
+
 const getAll = async (req, res) => {
   try {
     const flight = await flightService.getAllFlights(req.query);
@@ -54,4 +74,5 @@ const getAll = async (req, res) => {
 module.exports = {
   create,
   getAll,
+  get,
 };

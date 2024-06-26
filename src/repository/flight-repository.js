@@ -53,6 +53,16 @@ class FlightRepository {
     }
   }
 
+  async getFlight(FlightId) {
+    try {
+      const flight = await Flight.findByPk(FlightId);
+      return flight;
+    } catch (error) {
+      console.log("Something went wrong in the repository layer");
+      throw { error };
+    }
+  }
+
   async getAllFlights(filter) {
     try {
       const filterObject = this.#createFilter(filter);
