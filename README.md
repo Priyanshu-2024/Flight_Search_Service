@@ -5,6 +5,7 @@
 - Execute `npm install` on the same path as of your root directory of the downloaded project
 - Create a `.env` file in the root directory and add the following enviroment variables
     - `PORT=3000`
+    - `SYNC_DB=true`
 - Inside the `src/config` folder create a new config.json and the following piece of json.
 
 ### To initialize Sequelize 
