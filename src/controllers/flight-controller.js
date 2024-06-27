@@ -12,6 +12,7 @@ const create = async (req, res) => {
       arrivalAirportId: req.body.arrivalAirportId,
       arrivalTime: req.body.arrivalTime,
       departureTime: req.body.departureTime,
+      price: req.body.price,
     };
     const flight = await flightService.createFlight(flightRequestData);
     return res.status(SuccessCode.CREATED).json({
@@ -71,8 +72,30 @@ const getAll = async (req, res) => {
   }
 };
 
+const update = async (req, res) => {
+  try {
+    const flight = await flightService.updateFlight(req.params.id, req.body);
+    console.log("flightsdata1", flight);
+    return res.status(SuccessCode.OK).json({
+      data: flight,
+      message: "flight Successfully update",
+      success: true,
+      err: {},
+    });
+  } catch (error) {
+    console.log("me controller ki error", error);
+    return res.status(ServerErrorCodes.INTERNAL_SERVER_ERROR).json({
+      data: {},
+      success: false,
+      message: "failed flight update",
+      err: error,
+    });
+  }
+};
+
 module.exports = {
   create,
   getAll,
   get,
+  update,
 };

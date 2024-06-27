@@ -38,5 +38,6 @@ router.post(
 );
 router.post("/flights", FlightController.getAll);
 router.get("/flights/:id", FlightController.get);
+router.put("/flights/:id", FlightController.update);
 
 module.exports = router;
